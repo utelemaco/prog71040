@@ -5,7 +5,7 @@
 #include <time.h>
 #include <errno.h>
 
-#define NUM_PHILOSOPHERS 2
+#define NUM_PHILOSOPHERS 5
 #define THINKING_TIME 2
 #define EATING_TIME 1
 
@@ -79,7 +79,7 @@ void* philosopher(void* arg) {
         
         printf("Philosopher %d is trying to pick up fork %d\n", id, second_fork);
         while (pthread_mutex_trylock(&forks[second_fork]) == EBUSY) {
-            printf("Fork %d is in use. Philosopher %d is waiting to pick up it%d\n", second_fork, id);
+            printf("Fork %d is in use. Philosopher %d is waiting to pick up it\n", second_fork, id);
             sleep(rand() % EATING_TIME + 1);
         }
 
